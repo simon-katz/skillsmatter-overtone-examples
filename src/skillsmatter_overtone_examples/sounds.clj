@@ -5,21 +5,31 @@
 
 ;;;; ___________________________________________________________________________
 
-(comment ; not working -- SK 2019-06-11
-  ;; define a piano scale based on samples from freesound.org
+;; define a piano scale based on samples from freesound.org
 
-  (def sample-ids
-    {:c 148432, :d 148513, :e 148524, :f  148506
-     :g 148503, :a 148488, :b 148479, :c+ 148431})
+(def sample-ids
+  {:c 148432, :d 148513, :e 148524, :f  148506
+   :g 148503, :a 148488, :b 148479, :c+ 148431})
 
-  (def samples
-    (into {}
-          (for [[note id] sample-ids]
-            [note (sample (freesound-path id))])))
+(def samples
+  (into {}
+        (for [[note id] sample-ids]
+          [note (o/sample (o/freesound-path id))])))
 
-  (defn piano [note]
-    (let [sample (samples note)]
-      (sample))))
+(defn piano [note]
+  (let [sample (samples note)]
+    (sample)))
+
+(defn play-piano-notes [note-names]
+  (let [gap  400
+        [n & ns] note-names]
+    (piano n)
+    (when ns
+      (Thread/sleep gap) ; can/should you use `o/at`?
+      (play-piano-notes ns))))
+
+(comment
+  (u/do-and-return-nil (play-piano-notes [:c :d :e :f :g :a :b :c+])))
 
 ;;;; ___________________________________________________________________________
 
