@@ -14,7 +14,7 @@
     (* volume 1 src env)))
 
 (comment
-  (u/do-and-return-nil (hat))
+  (u/••• (hat))
   )
 
 ;; sampled kick drum
@@ -25,19 +25,19 @@
 (def kick (o/sample (o/freesound-path 2086)))
 
 (comment
-  (u/do-and-return-nil (kick))
+  (u/••• (kick))
   )
 
 ;; we can schedule beats for the future with the at macro:
 
 (comment
-  (u/do-and-return-nil (o/at (+ 1000 (o/now)) (kick)))
+  (u/••• (o/at (+ 1000 (o/now)) (kick)))
   )
 
 ;; ...and chain multiple beats together with a do form:
 
 (comment
-  (u/do-and-return-nil
+  (u/•••
    (let
        [time (o/now)]
      (o/at (+    0 time) (kick) )
@@ -57,7 +57,7 @@
   (o/apply-at (+ 1600 time) loop-beats (+ 1600 time) []))
 
 (comment
-  (u/do-and-return-nil (loop-beats (o/now)))
+  (u/••• (loop-beats (o/now)))
   (o/stop)
   )
 
@@ -85,7 +85,7 @@
   )
 
 (comment
-  (u/do-and-return-nil (metro-beats metro (metro)))
+  (u/••• (metro-beats metro (metro)))
   ;; because we're using a metronome, we can change the speed:
   (metro :bpm 180) ;slower
   (metro :bpm 300) ;faster
@@ -112,7 +112,7 @@
   )
 
 (comment
-  (u/do-and-return-nil (phat-beats metro (metro)))
+  (u/••• (phat-beats metro (metro)))
   (o/stop)
   )
 
@@ -150,7 +150,7 @@
 ;; put it all together
 
 (comment
-  (u/do-and-return-nil
+  (u/•••
    (metro :bpm 180)
    (dubstep) ;; start the synth, so that bass and wobble can change it
    (bass metro (metro) (cycle notes))

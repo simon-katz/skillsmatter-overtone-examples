@@ -2,6 +2,9 @@
 
 ;;;; ___________________________________________________________________________
 
-(defmacro do-and-return-nil [& body]
+(defmacro •• [& body]
+  `(do ~@body))
+
+(defmacro ••• [& body]
   `(do ~@body
        nil))

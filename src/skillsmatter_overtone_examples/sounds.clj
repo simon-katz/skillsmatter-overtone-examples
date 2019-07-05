@@ -29,7 +29,7 @@
       (play-piano-notes ns))))
 
 (comment
-  (u/do-and-return-nil (play-piano-notes [:c :d :e :f :g :a :b :c+])))
+  (u/••• (play-piano-notes [:c :d :e :f :g :a :b :c+])))
 
 ;;;; ___________________________________________________________________________
 
@@ -39,13 +39,13 @@
   (o/sin-osc freq))
 
 (comment
-  (u/do-and-return-nil (basic-sine))     ; tuning A
+  (u/••• (basic-sine))     ; tuning A
   (o/stop)
-  (u/do-and-return-nil (basic-sine 440)) ; same thing
+  (u/••• (basic-sine 440)) ; same thing
   (o/stop)
-  (u/do-and-return-nil (basic-sine 880)) ; doubling freq goes up one octave
+  (u/••• (basic-sine 880)) ; doubling freq goes up one octave
   (o/stop)
-  (u/do-and-return-nil (basic-sine 220)) ; halving freq goes down one octave
+  (u/••• (basic-sine 220)) ; halving freq goes down one octave
   (o/stop)
   )
 
@@ -53,11 +53,11 @@
   (o/saw freq))
 
 (comment
-  (u/do-and-return-nil (basic-saw))
+  (u/••• (basic-saw))
   (o/stop)
-  (u/do-and-return-nil (basic-saw 880))
+  (u/••• (basic-saw 880))
   (o/stop)
-  (u/do-and-return-nil (basic-saw 220))
+  (u/••• (basic-saw 220))
   (o/stop)
   )
 
@@ -65,11 +65,11 @@
   (o/square freq))
 
 (comment
-  (u/do-and-return-nil (basic-square))
+  (u/••• (basic-square))
   (o/stop)
-  (u/do-and-return-nil (basic-square 880))
+  (u/••• (basic-square 880))
   (o/stop)
-  (u/do-and-return-nil (basic-square 220))
+  (u/••• (basic-square 220))
   (o/stop)
   )
 
@@ -83,10 +83,10 @@
    (o/sin-osc (* 3 freq))))
 
 (comment
-  (u/do-and-return-nil (multiple-sines 440))
+  (u/••• (multiple-sines 440))
   (o/stop)
   ;;compare with:
-  (u/do-and-return-nil (basic-sine 440))
+  (u/••• (basic-sine 440))
   (o/stop)
   )
 
@@ -98,12 +98,12 @@
   (o/mix (o/saw (* freq [0.99 1 1.01]))))
 
 (comment
-  (u/do-and-return-nil (detuned-saws))
+  (u/••• (detuned-saws))
   (o/stop)
   ;; compare:
-  (u/do-and-return-nil (basic-saw))
+  (u/••• (basic-saw))
   (o/stop)
-  (u/do-and-return-nil (detuned-saws 100)) ;; compare with below
+  (u/••• (detuned-saws 100)) ;; compare with below
   (o/stop)
   )
 
@@ -116,13 +116,13 @@
     (o/sin-osc freq)))
 
 (comment
-  (u/do-and-return-nil (wobbled-sin))
+  (u/••• (wobbled-sin))
   (o/stop)
   ;; you can try it with deeper, slower wobbles:
-  (u/do-and-return-nil (wobbled-sin 440 2 50))
+  (u/••• (wobbled-sin 440 2 50))
   (o/stop)
   ;; if you make the wobble much faster, strange sounds emerge:
-  (u/do-and-return-nil (wobbled-sin 440 100 50))
+  (u/••• (wobbled-sin 440 100 50))
   (o/stop)
   )
 
@@ -135,22 +135,22 @@
     (o/lpf son sweep)))
 
 (comment
-  (u/do-and-return-nil (dubstep))
+  (u/••• (dubstep))
   (o/stop)
-  (u/do-and-return-nil (dubstep 150 3))
+  (u/••• (dubstep 150 3))
   (o/stop)
-  (u/do-and-return-nil (dubstep 200 6))
+  (u/••• (dubstep 200 6))
   (o/stop)
-  (u/do-and-return-nil (dubstep 50 6))
+  (u/••• (dubstep 50 6))
   (o/stop)
   )
 
 ;; we can control the oscillator once it has started
 (comment
-  (u/do-and-return-nil (dubstep))
-  (u/do-and-return-nil (o/ctl dubstep :wobble-freq 4))
-  (u/do-and-return-nil (o/ctl dubstep :wobble-freq 10))
-  (u/do-and-return-nil (o/ctl dubstep :wobble-freq 2))
+  (u/••• (dubstep))
+  (u/••• (o/ctl dubstep :wobble-freq 4))
+  (u/••• (o/ctl dubstep :wobble-freq 10))
+  (u/••• (o/ctl dubstep :wobble-freq 2))
   (o/stop)
   )
 
@@ -177,7 +177,7 @@
 
 ;; use it in a synth like this:
 (comment
-  (u/do-and-return-nil (dubstep (o/midi->hz 60)))
+  (u/••• (dubstep (o/midi->hz 60)))
   (o/stop)
   )
 
@@ -189,7 +189,7 @@
   )
 
 (comment
-  (u/do-and-return-nil (dubstep (o/midi->hz (o/note :c4))))
+  (u/••• (dubstep (o/midi->hz (o/note :c4))))
   (o/stop)
   )
 
@@ -200,8 +200,8 @@
 ;;=> (130.8127826502993 195.99771799087463 130.8127826502993)
 
 (comment
-  (u/do-and-return-nil (dubstep (notes 0)))
+  (u/••• (dubstep (notes 0)))
   (o/stop)
-  (u/do-and-return-nil (dubstep (notes 1)))
+  (u/••• (dubstep (notes 1)))
   (o/stop)
   )
